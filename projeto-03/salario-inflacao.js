@@ -83,15 +83,8 @@ switch (opcao) {
             if (ano == 2010) {
                 console.log("Crescimento Salarial: ".padEnd(40, ".") + "-");
             } else {
-                let salario_proximo_ano;
-                let percentual_aumento;
-
-                if (index < salarios_ano.length - 1) {
-                    salario_proximo_ano = salarios_ano[index + 1].salario;
-                    percentual_aumento = calcularPercentualAumento(salario_proximo_ano, salario);
-                } else {
-                    percentual_aumento = "-";
-                }
+                let salario_anterior = salarios_ano[index - 1].salario;
+                let percentual_aumento = calcularPercentualAumento(salario_anterior, salario);
                 console.log("Crescimento Salarial: ".padEnd(40, ".") + percentual_aumento + "%");
             };
 
@@ -105,7 +98,7 @@ switch (opcao) {
         break;
 }
 
-function calcularPercentualAumento(salario_ano, salario_anterior) {
+function calcularPercentualAumento(salario_anterior, salario_ano) {
     let valor_aumento = salario_ano - salario_anterior;
     let percentual_aumento = (valor_aumento / salario_anterior);
     let aumento_final = percentual_aumento * 100;
